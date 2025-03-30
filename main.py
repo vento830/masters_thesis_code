@@ -1,6 +1,7 @@
 from datetime import datetime;
-from call_to_pi import make_and_send_picture
-from bild_verkleinern import crop_picture
+from pi_camera_automation import make_and_send_picture
+from crop_picture import crop_picture
+
 def main():
    
     # Here, access to the Raspberry Pi is established, and the picture is taken.
@@ -8,8 +9,8 @@ def main():
 
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
-    number= str(input("Bitte geben Sie die Nummer des GW ein: "))
-    version = str(input("Bitte geben Sie die Version des GW ein: "))
+    number= str(input("[INPUT] Please enter the GW number: "))
+    version = str(input("[INPUT] Please enter the version of the GW: "))
     picture_name =f"GW_{number}_{version}_{current_time}.jpg"
     
     make_and_send_picture(

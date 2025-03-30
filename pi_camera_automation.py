@@ -16,7 +16,7 @@ def make_and_send_picture(
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
     try:
-        print(f"[INFO_RASP] Connect with Raspberry Pi")
+        print(f"[INFO_RASP] Connecting with Raspberry Pi")
         ssh_client.connect(hostname=hostname, username=username, password=password)
 
         # Befehl zusammensetzen: Wir ersetzen {filename} durch 'my_filename'
@@ -31,12 +31,13 @@ def make_and_send_picture(
         err = stderr.read().decode('utf-8')
 
         if exit_status == 0:
-            print("[INFO_RASP] Script executed successfully!")
+            #print("[INFO_RASP] Script executed successfully!")
+            pass
         else:
             print(f"[WARN_RASP] Script error (Exit-Code {exit_status}).")
 
-        if out:
-            #print("----- STDOUT -----")
+        if out and not out.isspace():
+            print("----- STDOUT -----")
             print(out)
         if err:
             print("----- STDERR -----")
@@ -52,7 +53,7 @@ def make_and_send_picture(
         sftp.get(remote_file_path, f"backup/{my_filename}")
         sftp.close()
 
-        print("[INFO_RASP] Picture succesfully locally stored")
+        print("[INFO_RASP] Picture successfully taken and locally stored")
 
     except Exception as e:
         print(f"[ERROR_RASP] Error while connecting or executing: {e}")
