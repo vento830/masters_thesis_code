@@ -2,12 +2,12 @@ import cv2
 import os
 def crop_picture(image_path):
     
-    print(f"Öffne Bild: {image_path}")
+    
     # Bild einlesen
     image = cv2.imread(f"backup/{image_path}")
     # Falls das Bild nicht eingelesen werden konnte, Programm beenden
     if image is None:
-        print("Bild konnte nicht eingelesen werden. Überprüfe den Dateipfad.")
+        print("Image could not be imported. Check the file path.")
         exit()
     # Höhe und Breite des Bildes auslesen
     height, width = image.shape[:2]
