@@ -8,7 +8,6 @@ def main():
     # The picture is then saved locally here with the name my_filename
 
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    
     number= str(input("[INPUT] Please enter the GW number: "))
     version = str(input("[INPUT] Please enter the version of the GW: "))
     picture_name =f"GW_{number}_{version}_{current_time}.jpg"
