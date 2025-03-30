@@ -4,7 +4,8 @@ from call_to_pi import make_and_send_picture
 from bild_verkleinern import crop_picture
 def main():
    
-    #hier wird der zugriff zum Raspberry Pi erstellt und das Bild aufgenommen. Das bild wird danach hier Lokal mit dem Namen my_filename gespeichert
+    #hier wird der zugriff zum Raspberry Pi erstellt und das Bild aufgenommen. 
+    # Das bild wird danach hier Lokal mit dem Namen my_filename gespeichert
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     number= str(input("Bitte geben Sie die Nummer des GW ein: "))

@@ -33,7 +33,5 @@ def crop_picture(image_path):
     base, ext = os.path.splitext(image_path)
     new_image_path = f"{base}_cropped{ext}"
 
-    #print(f"Neues Bild wird gespeichert unter: {image_path}")
-    #print(f"Breite: {width}, Höhe: {height}")
     cv2.imwrite(f"pic_folder/{new_image_path}", cropped_image)
     print("[INFO] Successfully cropped image!")
