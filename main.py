@@ -29,5 +29,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # Startpunkt - ruf unsere Hauptfunktion auf
     main()
