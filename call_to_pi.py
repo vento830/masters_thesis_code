@@ -5,14 +5,12 @@ def make_and_send_picture(
     username,
     password,
     my_filename,  
-    remote_command_template,
+    remote_command_template):
+    # This function does the following:
+    # 1) Establishes an SSH connection to the Raspberry Pi.
+    # 2) Executes the script 'camera_activation.py' with an argument (filename).
+    # 3) Downloads the file afterward (if it was created).
     
-):
-    """
-    1) Stellt eine SSH-Verbindung zum Raspberry Pi her.
-    2) Führt das Skript 'camera_activation.py' mit Argument (Dateiname) aus.
-    3) Lädt anschließend diese Datei herunter (sofern sie erstellt wurde).
-    """
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
