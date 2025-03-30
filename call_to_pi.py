@@ -6,6 +6,7 @@ def make_and_send_picture(
     password,
     my_filename,  
     remote_command_template):
+
     # This function does the following:
     # 1) Establishes an SSH connection to the Raspberry Pi.
     # 2) Executes the script 'camera_activation.py' with an argument (filename).
@@ -15,13 +16,13 @@ def make_and_send_picture(
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
     try:
-        print(f"[INFO] Connect with Raspberry Pi")
+        print(f"[INFO_RASP] Connect with Raspberry Pi")
         ssh_client.connect(hostname=hostname, username=username, password=password)
 
         # Befehl zusammensetzen: Wir ersetzen {filename} durch 'my_filename'
         remote_command = remote_command_template.format(filename=my_filename)
         
-        print(f"[INFO] Execute code on the Raspberry Pi")
+        print(f"[INFO_RASP] Execute code on the Raspberry Pi")
         stdin, stdout, stderr = ssh_client.exec_command(remote_command)
 
         exit_status = stdout.channel.recv_exit_status()
@@ -30,9 +31,9 @@ def make_and_send_picture(
         err = stderr.read().decode('utf-8')
 
         if exit_status == 0:
-            print("[INFO] Skript erfolgreich ausgeführt!")
+            print("[INFO_RASP] Script executed successfully!")
         else:
-            print(f"[WARN] Skript-Fehler (Exit-Code {exit_status}).")
+            print(f"[WARN_RASP] Script error (Exit-Code {exit_status}).")
 
         if out:
             #print("----- STDOUT -----")
@@ -51,12 +52,12 @@ def make_and_send_picture(
         sftp.get(remote_file_path, f"backup/{my_filename}")
         sftp.close()
 
-        print("[INFO] Picture succesfully locally stored")
+        print("[INFO_RASP] Picture succesfully locally stored")
 
     except Exception as e:
-        print(f"[ERROR] Fehler beim Verbinden oder Ausführen: {e}")
+        print(f"[ERROR_RASP] Error while connecting or executing: {e}")
     finally:
         ssh_client.close()
-        print("[INFO] Connection to Raspberry Pi closed.")
+        print("[INFO_RASP] Connection to Raspberry Pi closed.")
 
 
