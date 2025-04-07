@@ -10,6 +10,8 @@ path = "/Users/marv/MAA/venv_pylon/final_setting.jpg"
 # or the raw bytes
 # img = Path(path).read_bytes()
 
+Vorlage ='
+
 response = chat(
   model='llava',
   messages=[
