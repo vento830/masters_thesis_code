@@ -10,7 +10,7 @@ def main():
     
     number= str(input("[INPUT] Please enter the GW number: "))
     scenario = str(input("[INPUT] Please enter the scenario: "))
-    
+    test = str(input("[INPUT] Setup correct? (0,075 // 4): "))
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     while( True ):
