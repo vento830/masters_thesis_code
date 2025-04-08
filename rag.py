@@ -43,7 +43,49 @@ vorlage = """1. General Description of the Gear
 	•	Defect Category: None (the component is intact).
 	•	Conclusion: Based on the six listed categories (1 through 6), this gear can be clearly classified as defect-free."""
 
+vorlage_1= """You are an inspection system for gears. Please fill out the following template based on the provided image.
 
+Schema:
+1. General Description of the Gear
+   • Shape/Form: [Description here]
+   • Color/Material: [Description here]
+   • Surface Structure: [Description here]
+   • Condition of the Teeth: [Description here]
+
+2. Categorization with Respect to Possible Defects
+   1. Tooth Clipping
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+   2. Surface Scratches
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+   3. Wear Out
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+   4. Rust
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+   5. Production Errors
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+   6. Dirt
+      • Observation: [Observation]
+      • Localization: [Location where the issue occurs]
+      • Assessment: [Evaluation]
+
+3. Summary
+   • Overall Condition: [Summary]
+   • Defect Category: [Category or classification]
+   • Conclusion: [Final statement or recommendation]
+
+Use the following image description/text as the basis:
+
+"""
 
 
 
@@ -86,7 +128,7 @@ for image_file in os.listdir("pic_folder"):
         # Append a tuple with the filename and the encoded image
         image_elements.append((image_file, encoded_image))
 
-full_path = os.path.abspath(f"pic_folder/{image_elements[1][0]}")
+full_path = os.path.abspath(f"pic_folder/{image_elements[10][0]}")
 
 print(full_path)
 
@@ -95,12 +137,12 @@ response = chat(
   messages=[
     {
       'role': 'user',
-      'content': f'You are a gear wheel expert. You will see a gear wheel with some defects. Please describe the gear wheel and its defects. Here is a template of an gear wheel without defects: {vorlage}',
+      'content': f" {vorlage_1}",
       'images': [image_elements[10][1]],
     }
   ],
 )
-print(response.message.content)
+#print(response.message.content)
 
 
 #print(len(image_elements))
