@@ -12,7 +12,7 @@ def main():
     
     number= str(input("[INPUT] Please enter the GW number: "))
     scenario = str(input("[INPUT] Please enter the scenario: "))
-    test = str(input("[INPUT] Setup correct? (0,075 // 4): "))
+    test = str(input("[INPUT] Setup correct? (0,125 // 4): "))
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     while( True ):
@@ -28,8 +28,9 @@ def main():
          #v7: blurred (oben 0,225  // unten 4)
          
         version = str(input("[INPUT] Please enter the version of the GW: "))
-        picture_name =f"{current_time}__GW_{number}_{scenario}_{version}.jpg"
+        picture_name =f"GW_{number}_{scenario}_{version}__{current_time}.jpg"
         make_and_send_picture(
+            
             hostname="172.22.132.18",
             username="pirag",
             password="Omni123",
